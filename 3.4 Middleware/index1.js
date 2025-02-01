@@ -1,25 +1,24 @@
 import express from "express";
-import bodyParser from "body-parser";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
-const __dirname = dirname(fileURLToPath(import.meta.url)); //__dirname is the directory name of the current module.
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const app = express();  // Create an instance of express.
+const app = express();
 const port = 3000;
 
-app.use(bodyParser.urlencoded({ extended: true })); // Middleware to parse 'form' data. Always should be before the route handlers.
-
-// Serve the HTML file.
-app.get("/", (req, res) => {  
+app.get("/", (req, res) => {
+  console.log(__dirname + "/public/index.html");  // we will get: C:\Users\shani\OneDrive\שולחן העבודה\Web Development Projects\Web-Development-Projects\backend\3.4 Middleware/public/index.html
+  // server sends back a file to the client (response)
+  // here i dont just send html, i send the file i linked
   res.sendFile(__dirname + "/public/index.html");
 });
 
-// Handle form submission.
-app.post("/submit", (req, res) => { 
-  console.log(req.body);  // Request body is parsed and stored in req.body by the middleware.
+app.post("/submit", (req, res) => {
+  // server will get the data sent from the form (frontend)
+  console.log(req.body);
 });
 
-// Start the server.
+
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
@@ -28,3 +27,22 @@ app.listen(port, () => {
 
 
 
+
+
+/* Working with Express Middleware-
+Middleware is a function that runs between the request and the response.
+It can be used for a variety of things, such as logging, authentication, and more.
+Middleware functions can be used with the app.use() method.
+
+Work plan for this code-
+1. npm i body-parser
+2. nodemon index.js
+3. import bodyParser from "body-parser";
+4. app.use(bodyParser.urlencoded({ extended: true }));
+5. app.post("/submit", (req, res) => {
+  console.log(req.body);
+});
+6. <form action="/submit" method="post">
+
+
+*/
