@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auto Size Grid</title>
+
+  <style>
+    /* auto  */
+    .grid-container {
+      display: grid;    /* create a grid container (set to 100% size) */
+  /* Define the grid rows */
+  /* The first row is set to a fixed height of 100 pixels */
+  /* The second row takes up the remaining vertical space ('auto', meaning it will fit the content in there, to 100%, extendable) */
+      grid-template-rows: 100px auto;
+  /* Define the grid columns */
+  /* The first column is set to a fixed width of 200 pixels */
+  /* The second column takes up the remaining horizontal space */
+      grid-template-columns: 200px auto;
+    }
+
+    .grid-item {
+      font-size: 3rem;
+      background-color: darkviolet;
+      border: 5px solid goldenrod;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Auto Size Grid</h1>
+  <div class="grid-container">
+    <div class="grid-item">1</div>
+    <div class="grid-item">2</div>
+    <div class="grid-item">3</div>
+    <div class="grid-item">4</div>
+  </div>
+</body>
+
+</html>
